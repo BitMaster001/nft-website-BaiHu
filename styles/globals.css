@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {  
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  .transition-300 {
+    @apply transition-all ease-in-out delay-300
+  }
+
+  @-webkit-keyframes glide  {
+    from {
+      left: 0px;
+      top: -20px;
+    }
+    
+    to {
+      left: 0px;
+      top: 00px;
+    }
+  }
+}
