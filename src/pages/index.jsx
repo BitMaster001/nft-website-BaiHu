@@ -200,7 +200,7 @@ const Index = () => {
             <s.StatisticsInfo>
               <span>Total Price:</span>
               <span className="text-[#F23319]">
-                {(CONFIG.DISPLAY_COST * mintAmount).toFixed(2)}ETH
+                {(CONFIG.DISPLAY_COST * mintAmount).toFixed(3)}ETH
               </span>
             </s.StatisticsInfo>
             {/* 
@@ -224,7 +224,8 @@ const Index = () => {
                   <div className="flex flex-col justify-center items-center">
                     <div>Connect to the {CONFIG.NETWORK.NAME} network</div>
                     <button
-                      onClick={(e) => {
+                        className="px-2 py-1 rounded border border-white"
+                        onClick={(e) => {
                         e.preventDefault();
                         dispatch(connect());
                         getData();
@@ -248,7 +249,7 @@ const Index = () => {
                           getData();
                         }}
                       >
-                        {claimingNft ? "BUSY" : "BUY"}
+                        {claimingNft ? "" : "BUY"}
                       </button>
                     </div>
                   </>

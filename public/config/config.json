@@ -1,16 +1,16 @@
 {
-  "CONTRACT_ADDRESS": "0xA76d08814e42DCF54C7d658236587376cfCdC99B",
-  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0xA76d08814e42DCF54C7d658236587376cfCdC99B",
+  "CONTRACT_ADDRESS": "0x880F65A05dc720405F3e29707Dd9bEb46e3e31F7",
+  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0x880F65A05dc720405F3e29707Dd9bEb46e3e31F7",
   "NETWORK": {
     "NAME": "Rinkeby",
     "SYMBOL": "ETH",
     "ID": 4
   },
-  "NFT_NAME": "Uhiab",
-  "SYMBOL": "Uhiab",
+  "NFT_NAME": "BaiHu",
+  "SYMBOL": "BaiHu",
   "MAX_SUPPLY": 500,
-  "WEI_COST": 40000000000000000,
-  "DISPLAY_COST": 0.04,
+  "WEI_COST": 4000000000000000,
+  "DISPLAY_COST": 0.004,
   "GAS_LIMIT": 285000,
   "MARKETPLACE": "Opeansea",
   "MARKETPLACE_LINK": "https://opensea.io/collection/",
