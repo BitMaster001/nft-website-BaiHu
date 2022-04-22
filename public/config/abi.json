@@ -112,24 +112,6 @@
   {
     "inputs": [
       {
-        "internalType": "address[]",
-        "name": "airdropAddress",
-        "type": "address[]"
-      },
-      {
-        "internalType": "uint256",
-        "name": "numberOfTokens",
-        "type": "uint256"
-      }
-    ],
-    "name": "airdrop",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "address",
         "name": "",
         "type": "address"
@@ -582,6 +564,13 @@
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "teamMint",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {

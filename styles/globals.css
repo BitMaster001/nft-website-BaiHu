@@ -6,11 +6,17 @@
 
   html {
     scroll-behavior: smooth;
+    color: white;
+    background-color: black;
   }
   
   .transition-300 {
-    @apply transition-all ease-in-out delay-300
+    @apply transition-all ease-in-out delay-300;
   }
+
+  .normal-text {
+    @apply mobile:text-[16px] ipad:text-[20px];
+  }  
 
   @-webkit-keyframes glide  {
     from {

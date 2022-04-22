@@ -1,6 +1,6 @@
 {
-  "CONTRACT_ADDRESS": "0x880F65A05dc720405F3e29707Dd9bEb46e3e31F7",
-  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0x880F65A05dc720405F3e29707Dd9bEb46e3e31F7",
+  "CONTRACT_ADDRESS": "0x40852cc8FdfC34d78D7bA83e90549b6525bDdCc3",
+  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0x40852cc8FdfC34d78D7bA83e90549b6525bDdCc3",
   "NETWORK": {
     "NAME": "Rinkeby",
     "SYMBOL": "ETH",
@@ -9,8 +9,8 @@
   "NFT_NAME": "BaiHu",
   "SYMBOL": "BaiHu",
   "MAX_SUPPLY": 500,
-  "WEI_COST": 4000000000000000,
-  "DISPLAY_COST": 0.004,
+  "WEI_COST": 0,
+  "DISPLAY_COST": 0,
   "GAS_LIMIT": 285000,
   "MARKETPLACE": "Opeansea",
   "MARKETPLACE_LINK": "https://opensea.io/collection/",

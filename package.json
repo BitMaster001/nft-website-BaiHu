@@ -1,5 +1,5 @@
 {
-  "name": "aizaz-bahu",
+  "name": "next-synthients",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,20 +11,26 @@
   "dependencies": {
     "@react-hook/window-size": "^3.0.7",
     "cssnano": "^5.1.7",
+    "jquery": "^3.6.0",
     "next": "12.1.4",
     "react": "17.0.2",
-    "react-redux": "^7.2.4",
+    "react-accessible-accordion": "^5.0.0",
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-awesome-reveal": "^3.8.1",
     "react-dom": "17.0.2",
+    "react-modal": "^3.14.4",
+    "react-redux": "^8.0.0",
+    "react-scrollspy-navigation": "^1.0.2",
     "react-vertical-timeline-component": "^3.5.2",
-    "redux": "^4.1.1",
-    "redux-thunk": "^2.3.0",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.1",
     "sharp": "^0.30.3",
     "smoothscroll-polyfill": "^0.4.4",
+    "styled-jsx-plugin-postcss": "^4.0.1",
     "tailwind-styled-components": "^2.1.6",
-    "web3": "^1.5.1",
-    "web3-eth-contract": "^1.5.2"
+    "tailwindcss-pseudo-elements": "^2.0.0",
+    "web3": "^1.7.3",
+    "web3-eth-contract": "^1.7.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.4",
