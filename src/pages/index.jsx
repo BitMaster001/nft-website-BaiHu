@@ -1,73 +1,33 @@
-import React, { useEffect, useState } from "react";
+import { useState, useEffect } from 'react'
+import Layout from "components/Layout";
+import Home from "components/Sections/Home";
+import About from "components/Sections/About";
+import Roadmap from "components/Sections/Roadmap";
+import Team from "components/Sections/Team";
+import Faq from "components/Sections/Faq";
+
 import { useDispatch, useSelector } from "react-redux";
-import { connect } from "../redux/blockchain/blockchainActions";
-import { fetchData } from "../redux/data/dataActions";
+import { connect } from "redux/blockchain/blockchainActions";
+import { fetchData } from "redux/data/dataActions";
 import Image from "next/image";
-import tw from "tailwind-styled-components/dist/tailwind";
+import Modal from 'react-modal'
+
+import * as s from '../pagestyles/index'
 
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
 
-const s = {
-  Container: tw.div`
-    w-screen
-    h-screen 
-    bg-black
-    p-2
-    flex justify-center items-center
-  `,
-  Flex: tw.div`
-    flex justify-center items-center
-
-    mobile:w-full
-    mobile:flex-col
-
-    ipad:w-[1000px]
-    ipad:flex-row
-  `,
-  FlexItem: tw.div`
-    p-8
-
-    mobile:w-full
-
-    ipad:w-[500px]
-  `,
-  NumberBox: tw.div`
-    flex justify-between items-center rounded-md border-2 border-white font-bold
-    
-    mobile:text-[20px]
-    mobile:h-[40px] 
-    mobile:px-3
-    mobile:py-1 
-    
-    ipad:text-[24px]
-    ipad:h-[46px] 
-    ipad:px-4
-    ipad:py-1 
-  `,
-  SpinContainer: tw.div`
-    grid grid-flow-col grid-rows-2 gap-[6px]
-  `,
-  Spin: tw.div`
-    relative w-[14px] h-[8px]
-  `,
-  StatisticsInfo: tw.div`
-    flex justify-between my-2 font-bold
-  `,
-  ConnectButton: tw.div`
-    bg-pentagon-black-long w-full imagebutton
-    grid place-content-center
-    text-yellow
-
-    mobile:h-[50px]
-    mobile:text-[24px]
-    
-    ipad:h-[60px]
-    ipad:text-[24px]
-  `,
-};
-
 const Index = () => {
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
@@ -141,8 +101,21 @@ const Index = () => {
     setMintAmount(newMintAmount);
   };
 
-  const getData = () => {
+  const getData = async () => {
     if (blockchain.account !== "" && blockchain.smartContract !== null) {
+      const curTime = new Date((new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }))).getTime() / 1000
+      const saleConfig = await (await blockchain.smartContract.methods.saleConfig()).call()
+      const publicsaleStartTime = saleConfig.publicsaleStartTime;
+      const weiCost = curTime < publicsaleStartTime
+        ? saleConfig.presalePrice
+        : saleConfig.publicsalePrice
+      const displayCost = weiCost / 10 ** 18
+      SET_CONFIG({
+        ...CONFIG,
+        "WEI_COST": weiCost,
+        "DISPLAY_COST": displayCost
+      })
+
       dispatch(fetchData(blockchain.account));
     }
   };
@@ -155,7 +128,8 @@ const Index = () => {
       },
     });
     const config = await configResponse.json();
-    SET_CONFIG(config);
+
+    SET_CONFIG(config)
   };
 
   useEffect(() => {
@@ -167,98 +141,127 @@ const Index = () => {
   }, [blockchain.account]);
 
   return (
-    <s.Container>
-      <s.Flex>
-        <s.FlexItem>
-          <Image
-            src="/images/bg-baihu.jpg"
-            width={1920}
-            height={1080}
-            layout="responsive"
-            alt=""
-          />
-        </s.FlexItem>
-        <s.FlexItem>
-          <div className="w-1 mobile:h-[30px] ipad:h-[60px]"></div>
-          <div className="text-white">
+    <>
+      <Layout>
+        <Home openModal={openModal} />
+        <About />
+        <Roadmap />
+        <Team />
+        <Faq />
+      </Layout>
+
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        ariaHideApp={false}
+        contentLabel="Example Modal"
+        overlayClassName="fixed inset-0 bg-[#191919]/70"
+        className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] mobile:w-[94%] tablet:w-[60%] border border-white rounded-lg bg-[#252525] mobile:p-4 ipad:p-6"
+      >
+        <div>
+          <p>{blockchain.account ?? ""}</p>
+          <div className="flex justify-between items-center">
             <p className="text-[22px] font-bold">Number Of NFT To Mint</p>
-            <s.NumberBox>
-              <span>{mintAmount}</span>
-              <s.SpinContainer>
-                <s.Spin onClick={() => incrementMintAmount()}>
-                  <Image src="/images/spin-up.png" layout="fill" alt="spinup" />
-                </s.Spin>
-                <s.Spin onClick={() => decrementMintAmount()}>
-                  <Image
-                    src="/images/spin-down.png"
-                    layout="fill"
-                    alt="spindown"
-                  />
-                </s.Spin>
-              </s.SpinContainer>
-            </s.NumberBox>
-            <s.StatisticsInfo>
-              <span>Total Price:</span>
-              <span className="text-[#F23319]">
-                {(CONFIG.DISPLAY_COST * mintAmount).toFixed(2)}ETH
-              </span>
-            </s.StatisticsInfo>
-            {/* 
-              totalSupply / MaxSupply 
-            */}
-            <div className="text-center">
-              {data.totalSupply} / {CONFIG.MAX_SUPPLY}
-            </div>
-            {/* 
-              If totalSupply > maxSupply
-                then show NFT name and MarketPlace Link
-              Else
-                Show Price of NFT, Gas Fee, Connect Wallet Button, blockchain errMsg, feedback
-            */}
-            {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
-              <>The sale has ended.</>
-            ) : (
+            <Image src="/images/close.png" width={16} height={16} layout="fixed" alt="" className="invert cursor-pointer" onClick={closeModal} />
+          </div>
+          
+          <s.NumberBox>
+            <span>{mintAmount}</span>
+            <s.SpinContainer>
+              <s.Spin onClick={() => incrementMintAmount()}>
+                <Image src="/images/spin-up.png" layout="fill" alt="spinup" />
+              </s.Spin>
+              <s.Spin onClick={() => decrementMintAmount()}>
+                <Image
+                  src="/images/spin-down.png"
+                  layout="fill"
+                  alt="spindown"
+                />
+              </s.Spin>
+            </s.SpinContainer>
+          </s.NumberBox>
+          <s.StatisticsInfo>
+            <span>Total Price:</span>
+            <span className="text-[#F23319]">
+              {(CONFIG.DISPLAY_COST * mintAmount).toFixed(2)}ETH
+        </span>
+          </s.StatisticsInfo>
+          {/* 
+        totalSupply / MaxSupply 
+      */}
+          <div className="text-center">
+            {data.totalSupply} / {CONFIG.MAX_SUPPLY}
+          </div>
+          {/* 
+        If totalSupply > maxSupply
+          then show NFT name and MarketPlace Link
+        Else
+          Show Price of NFT, Gas Fee, Connect Wallet Button, blockchain errMsg, feedback
+      */}
+          {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
+            <>The sale has ended.</>
+          ) : (
               <>
                 {blockchain.account === "" ||
-                blockchain.smartContract === null ? (
-                  <div className="flex flex-col justify-center items-center">
-                    <div>Connect to the {CONFIG.NETWORK.NAME} network</div>
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        dispatch(connect());
-                        getData();
-                      }}
-                    >
-                      CONNECT
-                    </button>
-                    {blockchain.errorMsg !== "" ? (
-                      <>{blockchain.errorMsg}</>
-                    ) : null}
-                  </div>
-                ) : (
-                  <>
-                    <div>{feedback}</div>
-                    <div className="grid place-content-center">
+                  blockchain.smartContract === null ? (
+                    <div className="flex flex-col justify-center items-center">
+                      <div>Connect to the {CONFIG.NETWORK.NAME} network</div>
                       <button
-                        disabled={claimingNft ? 1 : 0}
+                        className="px-2 py-1 rounded border border-white"
                         onClick={(e) => {
                           e.preventDefault();
-                          claimNFTs();
+                          dispatch(connect());
                           getData();
                         }}
                       >
-                        {claimingNft ? "BUSY" : "BUY"}
-                      </button>
+                        CONNECT
+              </button>
+                      {blockchain.errorMsg !== "" ? (
+                        <>{blockchain.errorMsg}</>
+                      ) : null}
                     </div>
-                  </>
-                )}
+                  ) : (
+                    <>
+                      <div>{feedback}</div>
+                      <div className="grid place-content-center">
+                        <button
+                          className="px-2 py-1 rounded border border-white"
+                          disabled={claimingNft ? 1 : 0}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            claimNFTs();
+                            getData();
+                          }}
+                        >
+                          {claimingNft ? "Claiming NFT..." : "BUY"}
+                        </button>
+                      </div>
+                    </>
+                  )}
               </>
             )}
-          </div>
-        </s.FlexItem>
-      </s.Flex>
-    </s.Container>
+        </div>
+      </Modal>
+
+      <style jsx global>{`        
+        :root {
+          --animate-duration: 3000ms;
+          --animate-delay: 1s;
+        }
+        .ReactModal__Overlay {
+          opacity: 0;
+          transition: opacity 200ms ease-in-out;
+        }
+        
+        .ReactModal__Overlay--after-open{
+          opacity: 1;
+        }
+        
+        .ReactModal__Overlay--before-close{
+          opacity: 0;
+        }
+      `}</style>
+    </>
   );
 };
 

@@ -110,50 +110,6 @@
     "type": "event"
   },
   {
-    "inputs": [],
-    "name": "_baseTokenURI",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "_traitsURI",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address[]",
-        "name": "airdropAddress",
-        "type": "address[]"
-      },
-      {
-        "internalType": "uint256",
-        "name": "numberOfTokens",
-        "type": "uint256"
-      }
-    ],
-    "name": "airdrop",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
         "internalType": "address",
@@ -279,6 +235,19 @@
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "quantity",
+        "type": "uint256"
+      }
+    ],
+    "name": "mint",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "name",
     "outputs": [
@@ -339,27 +308,14 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "quantity",
-        "type": "uint256"
+        "internalType": "address[]",
+        "name": "addresses",
+        "type": "address[]"
       }
     ],
-    "name": "presaleMint",
+    "name": "removeFromWhitelist",
     "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "quantity",
-        "type": "uint256"
-      }
-    ],
-    "name": "publicSaleMint",
-    "outputs": [],
-    "stateMutability": "payable",
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -445,6 +401,11 @@
       {
         "internalType": "uint32",
         "name": "publicsaleStartTime",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint32",
+        "name": "publicsalePeriod",
         "type": "uint32"
       },
       {
@@ -535,6 +496,11 @@
         "type": "uint32"
       },
       {
+        "internalType": "uint32",
+        "name": "publicsalePeriod",
+        "type": "uint32"
+      },
+      {
         "internalType": "uint64",
         "name": "_presalePrice",
         "type": "uint64"
@@ -598,6 +564,13 @@
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "teamMint",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
