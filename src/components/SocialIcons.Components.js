@@ -6,6 +6,9 @@ export const SocialIconsContainer = tw.div`
 export const IconContainer = tw.a`
   relative cursor-pointer
 
-  w-[20px] 
-  h-[20px] 
+  mobile:w-[20px] 
+  mobile:h-[20px] 
+
+  ipad:w-[36px] 
+  ipad:h-[36px] 
 `
