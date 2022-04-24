@@ -18,7 +18,7 @@ const SocialIcons = () => {
       <s.SocialIconsContainer>
         {ICONDATA.map((data, index) => (
           <s.IconContainer key={index} href={data.link} target="_blank" rel="noreferrer">
-            <Image src={data.imgSrc} layout="fill" alt={data.name} />
+            <Image src={data.imgSrc} layout="fill" alt={data.name} quality={100} />
           </s.IconContainer>
         ))}
       </s.SocialIconsContainer>

@@ -40,7 +40,7 @@ export const SpinContainer = tw.div`
   grid grid-flow-col grid-rows-2 gap-[6px]
 `
 export const Spin = tw.div`
-  relative w-[14px] h-[8px] invert
+  relative w-[14px] h-[8px] bg-cover bg-repeat-round
 `
 export const StatisticsInfo = tw.div`
   flex justify-between my-2 font-bold

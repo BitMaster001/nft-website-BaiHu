@@ -14,8 +14,11 @@ import Modal from 'react-modal'
 
 import * as s from '../pagestyles/index'
 
-const truncate = (input, len) =>
-  input.length > len ? `${input.substring(0, len)}...` : input;
+import imgSpinUp from 'assets/images/spin-up.png'
+import imgSpinDown from 'assets/images/spin-down.png'
+
+const truncate = (input) =>
+  input?.length > 0 ? `${input.substring(0, 6)}...${input.substr(-4)}` : input;
 
 const Index = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -158,10 +161,9 @@ const Index = () => {
         overlayClassName="fixed inset-0 bg-[#191919]/70"
         className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] mobile:w-[94%] tablet:w-[60%] border border-white rounded-lg bg-[#252525] mobile:p-4 ipad:p-6"
       >
-        <div>
-          <p>{blockchain.account ?? ""}</p>
+        <div>          
           <div className="flex justify-between items-center">
-            <p className="text-[22px] font-bold">Number Of NFT To Mint</p>
+          <p className="text-[22px] font-bold">Number Of NFT To Mint &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-[18px] opacity-70">{truncate(blockchain.account) ?? ""}</span></p>
             <Image src="/images/close.png" width={16} height={16} layout="fixed" alt="" className="invert cursor-pointer" onClick={closeModal} />
           </div>
           
@@ -169,11 +171,15 @@ const Index = () => {
             <span>{mintAmount}</span>
             <s.SpinContainer>
               <s.Spin onClick={() => incrementMintAmount()}>
-                <Image src="/images/spin-up.png" layout="fill" alt="spinup" />
+                <Image 
+                  src={imgSpinUp} 
+                  layout="fill" 
+                  alt="spinup" 
+                />
               </s.Spin>
               <s.Spin onClick={() => decrementMintAmount()}>
                 <Image
-                  src="/images/spin-down.png"
+                  src={imgSpinDown}
                   layout="fill"
                   alt="spindown"
                 />
