@@ -39,9 +39,9 @@ const Home = ({ openModal }) => {
   return (
     <gs.SectionWrapper id="home" className="flex mobile:flex-col-reverse miniipad:flex-row gap-8">
       <div className="flex flex-col items-center justify-center mobile:gap-4 gap-8 mobile:w-full miniipad:w-[33%] text-center">
-        <s.Info>OG WL MINT COMING SOON</s.Info>
+        <s.Info>OG WL MINT STARTED ON RINKEBY</s.Info>
         {/* <s.Info>{timeLeft}</s.Info> */}
-        {/* <button className="mt-4 px-10 py-2 rounded-lg bg-[#0000FF] hover:bg-[#EE2222] transition-all mobile:text-base ipad:text-[30px] font-bold" onClick={openModal}>Mint</button> */}
+        <button className="mt-4 px-10 py-2 rounded-lg bg-[#0000FF] hover:bg-[#EE2222] transition-all mobile:text-base ipad:text-[30px] font-bold" onClick={openModal}>Mint</button>
       </div>
       <div className="mobile:w-full miniipad:w-[67%]">
         <Image src={imgBgBaihu} width={1920} height={1080} alt="" />
