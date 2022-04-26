@@ -1,7 +1,7 @@
 import tw from 'tailwind-styled-components'
 
 export const MenuContainer = tw.div`
-  fixed w-screen shadow-md z-50 desktop:pr-[17px] top-0
+  fixed w-screen shadow-md z-50 desktop:pr-[17px] top-0 left-0
 `
 export const Menu = tw.div`
   flex justify-between items-center relative bg-[#0C0C0D]

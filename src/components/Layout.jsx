@@ -6,10 +6,13 @@ export default function Layout({ children }) {
   return (
     <div className="mx-auto max-w-[1440px]">
       <Head>
-        
+        <title>Baihu NFT</title>
       </Head>
-      <Menu />
-      <main className="mobile:mt-[71px] ipad:mt-[91px]">{children}</main>
+      
+      <main className="mobile:mt-[57px] ipad:mt-[80px]">
+        <Menu />
+        {children}
+      </main>
     </div>
   );
 }

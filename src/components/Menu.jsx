@@ -18,7 +18,7 @@ const Menu = () => {
         <s.Menu>
           <Link href="/" passHref={true}>
             <a className="cursor-pointer relative mobile:w-[80px] mobile:h-[26.64px] desktop:w-[120px] desktop:h-[40px]">
-              <Image src={imgLogo} alt="" layout="fill" />
+              <Image src={imgLogo} alt="" layout="fill" quality={100} />
             </a>
           </Link>
 

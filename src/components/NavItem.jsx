@@ -1,16 +1,8 @@
-// import { forwardRef } from 'react';
 import * as s from './NavItem.Components'
 
-// const NavItem = forwardRef(({ href, text }, ref) => (
-//   <a ref={ref} href={href} rel="noreferrer">
-//     {text}
-//   </a>
-// ));
-
-// export default NavItem;
-const NavItem = ({ isActive, children }) => {
+const NavItem = ({ children }) => {
   return (
-    <s.NavItem $isActive={isActive}>
+    <s.NavItem>
       {children}
     </s.NavItem>
   )
