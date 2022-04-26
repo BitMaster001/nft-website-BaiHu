@@ -24,7 +24,7 @@ const data = [
     )
   },
   {
-    question: "Blockchain?",
+    question: "Smart Contract?",
     answer: "– ERC721A To Save Gas If You will mint more than one."
   },
   {

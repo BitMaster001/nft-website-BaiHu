@@ -1,18 +1,13 @@
-import { useState, useEffect, createRef } from "react";
+import { useState, useEffect } from "react";
 import NavItem from "./NavItem";
 import { useWindowWidth } from "@react-hook/window-size";
-// import ScrollSpy from 'react-scrollspy-navigation';
-// import { useRouter } from 'next/router'
-import AnchorLink from "react-anchor-link-smooth-scroll";
+import { Link } from 'react-scroll';
 
 import * as s from './Navbar.Components'
 
 const Navbar = ({ setIsOpened }) => {
-  const [activeIndex, setActiveIndex] = useState(-1);
   const width = useWindowWidth();
   const [screenWidth, setScreenWidth] = useState(0);
-
-  // const router = useRouter()
 
   useEffect(() => {
     setScreenWidth(width);
@@ -27,35 +22,25 @@ const Navbar = ({ setIsOpened }) => {
   ];
   return (
     <s.Navbar>
-      {/* <ScrollSpy> */}
       {navItems.map((navItem, index) => (
-        <AnchorLink offset={() => screenWidth < 500 ? 71 : 108} href={`#${navItem.name}`} key={index}>
-          {/* <NavItem key={index} href={`#${navItem.name}`} text={navItem.caption} ref={createRef()} onClick={() => router.push(`/#${navItem.name}`)} /> */}
-          <NavItem
-            isActive={activeIndex === index}
-            onClick={() => {
-              setActiveIndex(index);
-              setIsOpened(false);
-            }}>
+        <Link 
+          key={index} 
+          activeClass="active"
+          to={navItem.name} 
+          spy={true} 
+          offset={screenWidth < 500 ? -57 : -80} 
+          duration={500} 
+          onClick={() => {
+            setIsOpened(false);
+          }}
+        >
+          <NavItem>
             {navItem.caption}
           </NavItem>
-        </AnchorLink>
+        </Link>
       ))}
-      {/* </ScrollSpy> */}
     </s.Navbar>
   );
 };
 
 export default Navbar;
-
-/*
-//   <NavItem
-//     $isActive={activeIndex === index}
-//     onClick={() => {
-//       setActiveIndex(index);
-//       setIsOpened(false);
-//     }}
-//   >
-//     {navItem.caption}
-//   </NavItem>
-*/
