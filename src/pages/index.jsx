@@ -108,12 +108,12 @@ const Index = () => {
   const getData = async () => {
     if (blockchain.account !== "" && blockchain.smartContract !== null) {
       const curTime = new Date((new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }))).getTime() / 1000
-      const saleConfig = await (await blockchain.smartContract.methods.saleConfig()).call()
-      const publicsaleStartTime = saleConfig.publicsaleStartTime;
+      const publicsaleStartTime = (new Date("Fri Jun 03 2022 12:00:00 GMT-0400").getTime()) / 1000;
       const weiCost = curTime < publicsaleStartTime
-        ? saleConfig.presalePrice
-        : saleConfig.publicsalePrice
+        ? 4 * 10 ** 16
+        : 6 * 10 ** 16
       const displayCost = weiCost / 10 ** 18
+      console.log('displayCost', displayCost)
       SET_CONFIG({
         ...CONFIG,
         "WEI_COST": weiCost,
@@ -160,14 +160,14 @@ const Index = () => {
         ariaHideApp={false}
         contentLabel="Example Modal"
         overlayClassName="fixed inset-0 bg-[#191919]/70"
-        className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] mobile:w-[94%] tablet:w-[60%] border border-white rounded-lg bg-[#252525] mobile:p-4 ipad:p-6"
+        className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] mobile:w-[94%] tablet:w-[60%] border border-white/40 rounded-[40px] bg-[#0a0214] mobile:p-6 ipad:p-8"
       >
-        <div>
-          <div className="flex justify-between items-center mb-4">
-            <p className="text-[22px] font-bold">Number Of NFT To Mint &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-[18px] opacity-70">{truncate(blockchain.account) ?? ""}</span></p>
-            <Image src={imgCloseIcon} width={16} height={16} layout="fixed" alt="" className="invert cursor-pointer" onClick={closeModal} />
-          </div>
+        <div className="flex justify-between items-center mb-4">
+          <p className="text-[22px] font-bold">Mint Your BAIHU &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-[18px] opacity-70">{truncate(blockchain.account) ?? ""}</span></p>
+          <Image src={imgCloseIcon} width={16} height={16} layout="fixed" alt="" className="invert cursor-pointer" onClick={closeModal} />
+        </div>
 
+        <div className='pt-3'>
           <s.NumberBox>
             <span>{mintAmount}</span>
             <s.SpinContainer>
@@ -175,6 +175,7 @@ const Index = () => {
                 <Image
                   src={imgSpinUp}
                   layout="fill"
+                  quality={100}
                   alt="spinup"
                 />
               </s.Spin>
@@ -182,6 +183,7 @@ const Index = () => {
                 <Image
                   src={imgSpinDown}
                   layout="fill"
+                  quality={100}
                   alt="spindown"
                 />
               </s.Spin>
@@ -208,45 +210,45 @@ const Index = () => {
           {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
             <div className="pb-4">The sale has ended.</div>
           ) : (
-              <>
-                {blockchain.account === "" ||
-                  blockchain.smartContract === null ? (
-                    <div className="flex flex-col justify-center items-center">
-                      <div className="pb-4">Connect to the {CONFIG.NETWORK.NAME} network</div>
-                      <button
-                        className="px-2 py-1 rounded border border-white"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          dispatch(connect());
-                          getData();
-                        }}
-                      >
-                        CONNECT
-              </button>
-                      {blockchain.errorMsg !== "" ? (
-                        <>{blockchain.errorMsg}</>
-                      ) : null}
-                    </div>
-                  ) : (
-                    <>
-                      <div className="text-center pb-4">{feedback}</div>
-                      <div className="grid place-content-center">
-                        <button
-                          className="px-6 py-1 rounded border border-white"
-                          disabled={claimingNft ? 1 : 0}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            claimNFTs();
-                            getData();
-                          }}
-                        >
-                          {claimingNft ? "Claiming NFT..." : "BUY"}
-                        </button>
-                      </div>
-                    </>
-                  )}
-              </>
-            )}
+            <>
+              {blockchain.account === "" ||
+                blockchain.smartContract === null ? (
+                <div className="flex flex-col justify-center items-center">
+                  <div className="pb-4">Connect to the {CONFIG.NETWORK.NAME} network</div>
+                  <button
+                    className="px-2 py-1 rounded border border-white"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      dispatch(connect());
+                      getData();
+                    }}
+                  >
+                    CONNECT
+                  </button>
+                  {blockchain.errorMsg !== "" ? (
+                    <>{blockchain.errorMsg}</>
+                  ) : null}
+                </div>
+              ) : (
+                <>
+                  <div className="text-center pb-4">{feedback}</div>
+                  <div className="grid place-content-center">
+                    <button
+                      className="px-6 py-1 rounded-full w-[200px] bg-[#16a716] border border-white/40 hover:bg-[#00FF00]"
+                      disabled={claimingNft ? 1 : 0}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        claimNFTs();
+                        getData();
+                      }}
+                    >
+                      {claimingNft ? "Claiming NFT..." : "BUY"}
+                    </button>
+                  </div>
+                </>
+              )}
+            </>
+          )}
         </div>
       </Modal>
 
