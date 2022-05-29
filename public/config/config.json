@@ -1,10 +1,10 @@
 {
-  "CONTRACT_ADDRESS": "0x1b8f7127313E464205450C27335d097AD06708EA",
-  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0x1b8f7127313E464205450C27335d097AD06708EA",
+  "CONTRACT_ADDRESS": "0xC389b9FB02F7e1bb26405Dbd815AA24f610CF287",
+  "SCAN_LINK": "https://etherscan.io/address/0xC389b9FB02F7e1bb26405Dbd815AA24f610CF287",
   "NETWORK": {
-    "NAME": "Rinkeby",
+    "NAME": "Ethereum Mainnet",
     "SYMBOL": "ETH",
-    "ID": 4
+    "ID": 1
   },
   "NFT_NAME": "BaiHu",
   "SYMBOL": "BaiHu",

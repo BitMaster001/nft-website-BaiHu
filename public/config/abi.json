@@ -113,25 +113,6 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "allowList",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
         "name": "to",
         "type": "address"
       },
@@ -179,19 +160,6 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "collectionSize",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
         "internalType": "uint256",
@@ -229,19 +197,6 @@
         "internalType": "bool",
         "name": "",
         "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "maxBatchSize",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -339,19 +294,6 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "reserved",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
         "internalType": "address",
@@ -400,49 +342,6 @@
     "name": "safeTransferFrom",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "saleConfig",
-    "outputs": [
-      {
-        "internalType": "uint32",
-        "name": "presaleStartTime",
-        "type": "uint32"
-      },
-      {
-        "internalType": "uint32",
-        "name": "publicsaleStartTime",
-        "type": "uint32"
-      },
-      {
-        "internalType": "uint32",
-        "name": "publicsalePeriod",
-        "type": "uint32"
-      },
-      {
-        "internalType": "uint64",
-        "name": "presalePrice",
-        "type": "uint64"
-      },
-      {
-        "internalType": "uint64",
-        "name": "publicsalePrice",
-        "type": "uint64"
-      },
-      {
-        "internalType": "uint64",
-        "name": "publicsaleMaxMint",
-        "type": "uint64"
-      },
-      {
-        "internalType": "bool",
-        "name": "isFinished",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {
