@@ -107,7 +107,7 @@ const Index = () => {
 
   const getData = async () => {
     if (blockchain.account !== "" && blockchain.smartContract !== null) {
-      const curTime = new Date((new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }))).getTime() / 1000
+      const curTime = Date.now() / 1000
       const publicsaleStartTime = (new Date("Fri Jun 03 2022 12:00:00 GMT-0400").getTime()) / 1000;
       const weiCost = curTime < publicsaleStartTime
         ? 4 * 10 ** 16
@@ -242,7 +242,7 @@ const Index = () => {
                         getData();
                       }}
                     >
-                      {claimingNft ? "Claiming NFT..." : "BUY"}
+                      {claimingNft ? "Claiming NFT..." : "Mint"}
                     </button>
                   </div>
                 </>

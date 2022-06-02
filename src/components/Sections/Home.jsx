@@ -17,7 +17,8 @@ const Home = ({ openModal }) => {
   let x;
 
   function count() {
-    var t = (new Date("Fri Jun 03 2022 12:00:00 GMT-0400").getTime()) - Date.now();
+    var t = (new Date("Fri May 27 2022 12:00:00 GMT-0400").getTime()) - Date.now();
+    // var t = (new Date("Fri Jun 03 2022 12:00:00 GMT-0400").getTime()) - Date.now();
     var dd = Math.floor(t / (1000 * 60 * 60 * 24));
     var hh = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var mm = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
@@ -49,7 +50,7 @@ const Home = ({ openModal }) => {
     <gs.SectionWrapper id="home" className="flex mobile:flex-col-reverse miniipad:flex-row gap-8">
       {loading ? null : !timeout && (days + hours + minutes + seconds == 0) ? null : (
         <div className="flex flex-col items-center justify-center mobile:gap-4 gap-8 mobile:w-full miniipad:w-[33%] text-center">
-          <s.Info>OG WL MINT {timeout ? `STARTED ON ETHEREUM MAINNET` : `COMING SOON`}</s.Info>
+          <s.Info>OG WL MINT {timeout ? `STARTED! LFG!` : `COMING SOON`}</s.Info>
           <s.Info>{timeout ? `Hurry up!` : `${days} : ${hours} : ${minutes} : ${seconds}`}</s.Info>
           {timeout && (
             <button className="mt-4 px-10 py-2 rounded-lg bg-[#0000FF] hover:bg-[#EE2222] transition-all mobile:text-base ipad:text-[30px] font-bold" onClick={openModal}>Mint</button>
