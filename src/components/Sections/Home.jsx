@@ -17,8 +17,8 @@ const Home = ({ openModal }) => {
   let x;
 
   function count() {
-    var t = (new Date("Fri May 27 2022 12:00:00 GMT-0400").getTime()) - Date.now();
-    // var t = (new Date("Fri Jun 03 2022 12:00:00 GMT-0400").getTime()) - Date.now();
+    // var t = (new Date("Fri May 27 2022 12:00:00 GMT-0400").getTime()) - Date.now();
+    var t = (new Date("Fri Jun 03 2022 12:00:00 GMT-0400").getTime()) - Date.now();
     var dd = Math.floor(t / (1000 * 60 * 60 * 24));
     var hh = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var mm = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
