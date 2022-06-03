@@ -110,7 +110,7 @@ const Index = () => {
       const curTime = Date.now() / 1000
       const publicsaleStartTime = (new Date("Sat Jun 04 2022 12:00:00 GMT-0400").getTime()) / 1000;
       const weiCost = curTime < publicsaleStartTime
-        ? 4 * 10 ** 16
+        ? 6 * 10 ** 16
         : 6 * 10 ** 16
       const displayCost = weiCost / 10 ** 18
       console.log('displayCost', displayCost)
