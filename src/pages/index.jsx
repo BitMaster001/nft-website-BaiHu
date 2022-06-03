@@ -108,7 +108,7 @@ const Index = () => {
   const getData = async () => {
     if (blockchain.account !== "" && blockchain.smartContract !== null) {
       const curTime = Date.now() / 1000
-      const publicsaleStartTime = (new Date("Fri Jun 03 2022 12:00:00 GMT-0400").getTime()) / 1000;
+      const publicsaleStartTime = (new Date("Sat Jun 04 2022 12:00:00 GMT-0400").getTime()) / 1000;
       const weiCost = curTime < publicsaleStartTime
         ? 4 * 10 ** 16
         : 6 * 10 ** 16
