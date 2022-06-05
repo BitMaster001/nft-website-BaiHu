@@ -50,7 +50,7 @@ const Home = ({ openModal }) => {
     <gs.SectionWrapper id="home" className="flex mobile:flex-col-reverse miniipad:flex-row gap-8">
       {loading ? null : !timeout && (days + hours + minutes + seconds == 0) ? null : (
         <div className="flex flex-col items-center justify-center mobile:gap-4 gap-8 mobile:w-full miniipad:w-[33%] text-center">
-          <s.Info>OG WL MINT {timeout ? `STARTED! LFG!` : `COMING SOON`}</s.Info>
+          <s.Info>PUBLIC MINT IS LIVE NOW!</s.Info>
           <s.Info>{timeout ? `Hurry up!` : `${days} : ${hours} : ${minutes} : ${seconds}`}</s.Info>
           {timeout && (
             <button className="mt-4 px-10 py-2 rounded-lg bg-[#0000FF] hover:bg-[#EE2222] transition-all mobile:text-base ipad:text-[30px] font-bold" onClick={openModal}>Mint</button>
